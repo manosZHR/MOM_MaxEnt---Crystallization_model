@@ -40,7 +40,6 @@ kd = 2e-4
 Eg = 12000
 Ed = 12000
 
-'''Temperature cycle'''
 T = 308
 R = 8.314
 Kg = kg*np.exp(-Eg/(R*T))
@@ -89,7 +88,6 @@ initial_values = [initial_m_d[0],initial_m_d[1],initial_m_d[2],initial_m_d[3],in
 
 
 
-
 '''Daughter size distribution'''
 q = 2
 def g(L,λ): return( 3*L**2 * (2*q+1) * ( (2/(λ**3))**(2*q+1) ) * (L**3-(λ**3)/2)**(2*q) )
@@ -122,8 +120,9 @@ mu0_l=[initial_m_l[0],initial_m_l[1],initial_m_l[2],initial_m_l[3]]
 sol0_l,lambdas0_l = maxent_reconstruct_c0_2(mu=mu0_l,bnds=[0,2])
 temp2 = lambdas0_l
 
-tol1 = 1e-4
-tol2 = 1e-4
+'''Integration tolerances'''
+tol1 = 1e-4 #absolute error
+tol2 = 1e-4 #relative error
 
 def moments(t,y):
     m0_d=y[0]
