@@ -170,7 +170,6 @@ pp.show()
 pp.figure(1)
 
 
-
 Lmean=r.y[1,0]/r.y[0,0]
 σ=np.abs(r.y[2,0]-Lmean**2)**(1/2)
 Lmin=Lmean-4*σ
