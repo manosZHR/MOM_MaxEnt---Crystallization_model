@@ -6,8 +6,6 @@ Created on Mon May 23 19:45:50 2022
 """
 
 
-'''total time is  0.7143400271733602 min'''
-
 import time 
 import numpy as np
 from scipy.integrate import quad,solve_ivp
@@ -143,19 +141,11 @@ def moments(t,y):
     σl=np.sqrt( np.abs(m2_l-2*Lmean_l*m1_l+Lmean_l**2*m0_l)/m0_l )
     
     
-    Lmin_d = 0.25#Lmean_d - 4*σd
-    if Lmin_d<0: Lmin_d = Lmean_d - 3*σd
-    if Lmin_d<0: Lmin_d = Lmean_d - 2*σd
-    Lmax_d = Lmean_d + 3*σd
-    if Lmax_d>2: Lmax_d = Lmean_d + 3*σd
-    if Lmax_d>2: Lmax_d = Lmean_d + 2*σd
-        
-    Lmin_l = 0.25#Lmean_l - 4*σl
-    if Lmin_l<0: Lmin_l = Lmean_l - 3*σl
-    if Lmin_l<0: Lmin_l = Lmean_l - 2*σl
-    Lmax_l = Lmean_l + 3*σl
-    if Lmax_l>2: Lmax_l = Lmean_l + 3*σl
-    if Lmax_l>2: Lmax_l = Lmean_l + 2*σl
+    Lmin_d = max(0.25,Lmean_d - 4*σd)
+    Lmax_d = Lmean_d + 4*σd
+    
+    Lmin_l = max(0.25,Lmean_l - 4*σl)
+    Lmax_l = Lmean_l + 4*σl
     
     bnds_d=[Lmin_d,Lmax_d] 
     sol_d, lambdas_d= maxent_reconstruct_c1_1(mu=y[0:4] ,bnds=bnds_d)
