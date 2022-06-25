@@ -52,18 +52,18 @@ def moments(t,y):
     def moment1(L):
         return(sol(L)+0.002*sol(L)*L)
     
-    dm1dt, err1 = integrate.quad(moment1,Lmin,Lmax)
+    dm1dt=integrate.quad(moment1,Lmin,Lmax)[0]
     
     
     def moment2(L):
         return(2*L*(sol(L)+0.002*sol(L)*L))
     
-    dm2dt, err2=integrate.quad(moment2,Lmin,Lmax)
+    dm2dt=integrate.quad(moment2,Lmin,Lmax)[0]
     
     def moment3(L):
         return(3*L**2*(sol(L)+0.002*sol(L)*L))
     
-    dm3dt, err3=integrate.quad(moment3,Lmin,Lmax)
+    dm3dt=integrate.quad(moment3,Lmin,Lmax)[0]
     
     return(dm0dt,dm1dt,dm2dt,dm3dt)
 
@@ -71,7 +71,7 @@ def moments(t,y):
 r=integrate.solve_ivp(moments,[0,60],initial_m,method='BDF',jac=None,t_eval=t,rtol=10**(-4),max_step=0.9)
 
 
-'''Επίλυση συστήματος με τις ροπές'''
+'''Επίλυση συστήματος με αντικατάσταση των ολοκληρωμάτων από ροπές'''
 
 def moments1(y,t):
     m0 = y[0]
@@ -126,14 +126,12 @@ def no(L):
     return(0.0399*np.exp(-((L-50)**2)/200))
 
 
-'''Ορισμός της γνωστής τελικής κατανομής από το paper'''
-
 def n(L,t):
     return(no((L+500-500*np.exp(0.002*t))*np.exp(-0.002*t))*np.exp(-0.002*t))
 
 end=time.time()
 
-print(end-start,'s')
+print('total computing time:',end-start,'s')
 
 
 
