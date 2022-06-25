@@ -34,16 +34,16 @@ def theta0(tau):
 
 def theta(tau): return theta0(tau)*Tr
 
-# Function that will convert any given function 'f' defined in a given range '[a,b]' to a periodic function of period 'b-a' 
-def periodicf(a,b,f,x):
-    if x>=a and x<=b :
-        return f(x)
-    elif x>b:
-        x_new=x-(b-a)
-        return periodicf(a,b,f,x_new)
-    elif x<(a):
-        x_new=x+(b-a)
-        return periodicf(a,b,f,x_new)
+# Function that will convert temperature defined in a given range '[a,b]' to a periodic function of period 'b-a' 
+def periodicT(a,b,T,t):
+    if t>=a and t<=b :
+        return T(t)
+    elif t>b:
+        t_new=t-(b-a)
+        return periodicT(a,b,T,t_new)
+    elif t<(a):
+        t_new=t+(b-a)
+        return periodicT(a,b,t,t_new)
     
 def T(tau): return periodicf(0,1,theta,tau)
 
