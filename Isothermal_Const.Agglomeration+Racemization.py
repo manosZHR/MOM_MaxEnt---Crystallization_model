@@ -121,9 +121,6 @@ def G_l(Sl,T,L):
 q = 2
 def g(L,λ): return( 3*L**2 * (2*q+1) * ( (2/(λ**3))**(2*q+1) ) * (L**3-(λ**3)/2)**(2*q) )
 
-'''Breakage kernel'''
-def a(l):
-    return l
 
 '''Agglomeration kernel'''
 b0=1
