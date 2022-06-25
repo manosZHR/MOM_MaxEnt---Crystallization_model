@@ -451,21 +451,5 @@ pp.xlabel('time',{"fontsize":16})
 pp.ylabel('enantiomeric excess',{"fontsize":16})
 pp.show()
 
-'''t=20'''
-Lmean_d = np.abs(r.y[1,-1]/r.y[0,-1])
-σd = np.sqrt( np.abs(r.y[2,-1]-2*Lmean_d*r.y[1,-1]+Lmean_d**2*r.y[0,-1])/r.y[0,-1] )
-Lmin_d = Lmean_d - 6*σd
-Lmax_d = Lmean_d + 6*σd
-bnds_d = [Lmin_d,Lmax_d]
-mulast_d=[r.y[0,-1],r.y[1,-1],r.y[2,-1],r.y[3,-1]]
-sollast_d, lambdaslast=maxent_reconstruct_c0_1(mu=mulast_d,bnds=bnds_d)
-
-pp.figure(6)
-pp.figure(figsize=[12, 10])
-L=np.linspace(0,6)
-pp.plot(L,sollast_d(L))
-pp.xlabel('Characteristic Length',{"fontsize":16})
-pp.ylabel('Number Density Function',{"fontsize":16})
-pp.show()
 
 
