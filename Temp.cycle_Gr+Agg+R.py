@@ -36,7 +36,7 @@ m3d0 = 0.062806 #initial distribution of population D parameter [-]
 ratio = 1.5 #ratio of m3d0/m3l0 [-]
 m3l0 = m3d0/ratio #initial distribution of population L parameter [-]
 
-'''Αδιαστατοποίηση'''
+'''Nondimensionalization'''
 Lr = 100e-6 #reference crystal size [m]
 tr = 3600 #reference time (for one cycle) [s]
 Tr = 273 #reference temperature [K]
